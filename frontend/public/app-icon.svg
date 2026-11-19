@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title">
+  <title id="title">题题的库：题页上的 T</title>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#13755A"/>
+  <rect x="39" y="37" width="58" height="62" rx="9" fill="#082F28" opacity=".36"/>
+  <rect x="36" y="32" width="58" height="63" rx="8" fill="#9DE2BD"/>
+  <path d="M33 24h39l13 13v44a8 8 0 0 1-8 8H33a8 8 0 0 1-8-8V32a8 8 0 0 1 8-8Z" fill="#FAFFF5"/>
+  <path d="M72 24v9a4 4 0 0 0 4 4h9Z" fill="#C5EDD5"/>
+  <path d="M39 44h32v8H59v24h-8V52H39Z" fill="#145E47"/>
+  <circle cx="91" cy="89" r="16" fill="#F8D374"/>
+  <path d="m84 89 4.5 4.5L98 84" fill="none" stroke="#22443A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

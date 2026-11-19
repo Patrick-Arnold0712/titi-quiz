@@ -1,0 +1,232 @@
+/* 设计令牌 —— 沿用参考站（zhongshanjunli）的绿色系与圆角，保证视觉连续 */
+:root {
+  --pri: #12805c; --pri-d: #0b5c42; --pri-l: #e6f4ee;
+  --bg: #f3f6f4; --card: #fff; --line: #e4eae6;
+  --ink: #1d2a24; --mut: #6d7d75;
+  --ok: #1a9d55; --okbg: #eaf8f0;
+  --bad: #d92d20; --badbg: #fdeceb;
+  --warn: #b7791f; --warnbg: #fdf6e7;
+  --sh: 0 2px 10px rgba(18, 60, 42, .06);
+  --r: 14px;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+               "Microsoft YaHei", system-ui, sans-serif;
+  background: var(--bg); color: var(--ink); line-height: 1.7; font-size: 15px;
+  padding-bottom: 76px;
+}
+a { color: var(--pri); text-decoration: none; }
+button { font-family: inherit; }
+
+/* ---------- 顶栏 ---------- */
+.top {
+  position: sticky; top: 0; z-index: 40;
+  background: linear-gradient(135deg, #12805c, #0b5c42); color: #fff;
+  box-shadow: 0 2px 12px rgba(11, 60, 45, .25);
+}
+.top .inner {
+  max-width: 1080px; margin: 0 auto; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; }
+.brand .logo {
+  width: 24px; height: 24px; border-radius: 7px; background: #fff; color: var(--pri-d);
+  display: grid; place-items: center; font-size: 13px; font-weight: 800;
+}
+.brand em { font-style: normal; font-weight: 400; opacity: .82; font-size: 12px; }
+.top .spacer { flex: 1; }
+.top .pill {
+  font-size: 12px; background: rgba(255,255,255,.16); padding: 3px 10px; border-radius: 999px;
+}
+
+/* ---------- 内容 ---------- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 16px 14px 10px; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 22px 0 10px; }
+h3 { font-size: 14px; margin: 16px 0 8px; color: var(--mut); font-weight: 600; }
+.muted { color: var(--mut); font-size: 13px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 14px 16px; box-shadow: var(--sh); margin-bottom: 12px;
+}
+.card.tight { padding: 10px 14px; }
+
+.grid { display: grid; gap: 12px; }
+.grid.c2 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid.c3 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ---------- 控件 ---------- */
+.btn {
+  border: 0; border-radius: 10px; padding: 9px 14px; font-size: 14px; cursor: pointer;
+  font-weight: 600; background: var(--pri); color: #fff;
+}
+.btn:hover { background: var(--pri-d); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.ghost { background: #fff; border: 1px solid var(--line); color: var(--ink); font-weight: 500; }
+.btn.ghost:hover { background: var(--pri-l); }
+.btn.mini { padding: 5px 10px; font-size: 12.5px; border-radius: 8px; }
+
+select, input[type=text], input[type=number] {
+  font-family: inherit; font-size: 14px; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; outline: none;
+}
+select:focus, input:focus { border-color: var(--pri); }
+
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+.chip {
+  border: 1px solid var(--line); background: #fff; border-radius: 999px;
+  padding: 5px 12px; font-size: 13px; color: var(--mut); cursor: pointer;
+}
+.chip.on { background: var(--pri); border-color: var(--pri); color: #fff; font-weight: 600; }
+
+/* ---------- 统计 ---------- */
+.statline { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
+.statline .pill {
+  background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  padding: 3px 10px; font-size: 12.5px; color: var(--mut);
+}
+.statline .pill.dim { color: #a8b0ad; border-style: dashed; }
+.kpi { text-align: center; padding: 14px 8px; }
+.kpi .v { font-size: 26px; font-weight: 700; color: var(--pri-d); line-height: 1.2; }
+/* 数据不足时 KPI 显示「—」：降级成灰色，避免被误读成 0 */
+.kpi .v.dim { color: var(--mut); }
+.kpi .k { font-size: 12.5px; color: var(--mut); margin-top: 2px; }
+
+/* ---------- 题目 ---------- */
+.q-stem { font-size: 15px; line-height: 1.8; margin-bottom: 10px; white-space: pre-wrap; }
+.opt {
+  display: flex; gap: 9px; align-items: flex-start; padding: 9px 11px; border-radius: 10px;
+  border: 1px solid var(--line); margin-bottom: 7px; cursor: pointer; background: #fff;
+  transition: background .12s, border-color .12s;
+}
+.opt:hover { background: var(--pri-l); border-color: var(--pri); }
+.opt.on { background: var(--pri-l); border-color: var(--pri); font-weight: 600; }
+.opt.right { background: var(--okbg); border-color: var(--ok); }
+.opt.wrong { background: var(--badbg); border-color: var(--bad); }
+.opt .k {
+  flex: none; width: 22px; height: 22px; border-radius: 6px; background: var(--bg);
+  display: grid; place-items: center; font-size: 12.5px; font-weight: 700; color: var(--mut);
+}
+.opt.on .k { background: var(--pri); color: #fff; }
+.opt.right .k { background: var(--ok); color: #fff; }
+.opt.wrong .k { background: var(--bad); color: #fff; }
+
+.tag {
+  display: inline-block; font-size: 11.5px; padding: 2px 7px; border-radius: 6px;
+  background: var(--pri-l); color: var(--pri-d); margin-right: 6px;
+}
+.tag.grey { background: var(--bg); color: var(--mut); }
+.tag.warn { background: var(--warnbg); color: var(--warn); }
+.tag.bad { background: var(--badbg); color: var(--bad); }
+.tag.ok { background: var(--okbg); color: var(--ok); }
+
+.note { border-left: 3px solid var(--pri); background: var(--pri-l); padding: 9px 12px; border-radius: 8px; font-size: 13.5px; }
+.note.bad { border-color: var(--bad); background: var(--badbg); }
+.note.ok { border-color: var(--ok); background: var(--okbg); }
+.note.warn { border-color: var(--warn); background: var(--warnbg); }
+
+/* 答题卡 */
+.sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 6px; }
+.sheet .cell {
+  border: 1px solid var(--line); border-radius: 8px; text-align: center; padding: 6px 0;
+  font-size: 13px; cursor: pointer; background: #fff;
+}
+.sheet .cell.done { background: var(--pri-l); border-color: var(--pri); color: var(--pri-d); font-weight: 700; }
+.sheet .cell.cur { outline: 2px solid var(--pri); }
+.sheet .cell.flag { background: var(--warnbg); border-color: var(--warn); }
+/* 题面残缺的题：划掉，提示「别在这上面浪费时间」 */
+.sheet .cell.broken {
+  background: var(--badbg); border-color: var(--bad); color: var(--bad);
+  text-decoration: line-through;
+}
+
+/* ---------- 底部导航（移动端） ---------- */
+.bnav {
+  position: fixed; bottom: 0; left: 0; right: 0; background: #fff;
+  border-top: 1px solid var(--line); z-index: 50;
+}
+.bnav .inner { max-width: 1080px; margin: 0 auto; display: flex; }
+.bnav button {
+  flex: 1; border: 0; background: none; padding: 8px 2px 7px; font-size: 10.5px;
+  color: var(--mut); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px;
+}
+.bnav button .ic { font-size: 17px; line-height: 1; }
+.bnav button.on { color: var(--pri); font-weight: 700; }
+
+/* 桌面端：底部导航收起，改用顶栏内的导航 */
+@media (min-width: 860px) {
+  body { padding-bottom: 0; }
+  .bnav { display: none; }
+  .topnav { display: flex !important; gap: 4px; flex-wrap: wrap; }
+}
+.topnav { display: none; }
+.topnav button {
+  border: 0; background: rgba(255,255,255,.12); color: #fff; padding: 5px 11px;
+  border-radius: 8px; font-size: 13px; cursor: pointer;
+}
+.topnav button.on { background: #fff; color: var(--pri-d); font-weight: 700; }
+
+.bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--pri); }
+.bar.bad > i { background: var(--bad); }
+.bar.warn > i { background: var(--warn); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td {
+  text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line);
+  /* 只允许在「词内可断」的位置换行。
+     这里**不能**用 overflow-wrap: anywhere —— 它会把 min-content 压到极窄，
+     表格于是被硬挤成 "auth / ority" 那种断词惨状。
+     用 break-word，表格保持自然宽度，超出部分交给下面那层滚动容器。 */
+  overflow-wrap: break-word;
+}
+
+/* 宽表格的横向滚动容器。
+   不加这层，宽表格会把整个页面撑宽，手机上就出现横向滚动条
+   （实测资料库页 486px > 390px）。用一层 wrapper 而不是给 table 加
+   display:block —— 后者会让表头和数据列各自成表，列宽对不齐。 */
+.tscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tscroll > table { min-width: 100%; width: auto; white-space: nowrap; }
+th { color: var(--mut); font-weight: 600; font-size: 12.5px; }
+
+/* ---------- 长文阅读（教材原文 / 知识链接） ---------- */
+/* 原先直接塞在 <p> 里：13.5px、line-height 1.9、一整段到底。
+   手机上又小又密，看不下去。这里统一放大、拉开行距、逐句分行。 */
+.rt {
+  font-size: 15.5px;
+  line-height: 2.05;
+  color: #24352d;
+  letter-spacing: .2px;
+}
+.rt p {
+  margin: 0 0 10px;
+  /* 首行轻微缩进，让「一句一段」看起来像列表而不是散句 */
+  padding-left: 11px;
+  border-left: 2px solid var(--line);
+}
+.rt p:last-child { margin-bottom: 0; }
+
+/* 重点标注：三档，够用不刺眼 */
+.rt mark { background: transparent; color: inherit; }
+/* 年份、日期、数量 —— 军理考卷最爱考的硬信息 */
+.rt mark.date {
+  color: #9a4a06; background: #fdf1e0;
+  padding: 0 3px; border-radius: 4px; font-weight: 700;
+}
+/* 法律、著作、文件 */
+.rt mark.doc {
+  color: var(--pri-d); background: var(--pri-l);
+  padding: 0 3px; border-radius: 4px; font-weight: 700;
+}
+/* 序数、数量词 */
+.rt mark.num { color: #9a4a06; font-weight: 700; }
+/* 引号里的专有名词 */
+.rt mark.term { color: #1f4fa8; background: #eaf1fd; padding: 0 3px; border-radius: 4px; }
+/* 结论 / 定义标志词 —— 只标词，不标整句 */
+.rt mark.key {
+  color: var(--pri-d); font-weight: 700;
+  border-bottom: 2px solid var(--pri);
+}
