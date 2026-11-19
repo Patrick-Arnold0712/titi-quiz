@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#13755a">
+<meta name="description" content="题题的库在线体验：做示例题、即时判分、重做错题。">
+<title>题题的库 · 在线体验</title>
+<link rel="icon" href="./app-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<script src="./quiz.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="wrap brand">
+<img src="./app-icon.svg" width="42" height="42" alt="">
+<strong>题题的库</strong><span class="badge">在线体验</span>
+<a class="source" href="https://github.com/Patrick-Arnold0712/titi-quiz">源码与使用说明</a>
+</div></header>
+<main class="wrap">
+<section class="intro">
+<p class="eyebrow">多学科题库 · 示例练习</p>
+<h1>做一道题，<br>再看它为什么对。</h1>
+<p>选择一个学科，提交答案后立即看解析。做错的题会进入错题本，答对后自动移出。</p>
+</section>
+<section class="work" aria-label="在线刷题">
+<aside class="panel status">
+<div class="metrics"><div><strong id="done">0</strong><small>已做 / 6 题</small></div><div><strong id="correct">—</strong><small>当前正确率</small></div></div>
+<label for="subject">练习学科</label>
+<select id="subject"><option value="all">全部学科</option><option>自然科学</option><option>数学</option></select>
+<div class="tabs" aria-label="练习范围"><button id="all" type="button" aria-pressed="true">练习</button><button id="wrong" type="button" aria-pressed="false">错题本（0）</button></div>
+</aside>
+<div class="panel card">
+<div id="question">
+<div class="meta"><span id="category"></span><span id="position"></span></div>
+<h2 id="stem" tabindex="-1"></h2>
+<form id="form"><fieldset id="options"><legend class="visually-hidden">选择一个答案</legend></fieldset>
+<div class="actions"><button id="submit" type="submit" class="primary" disabled>提交答案</button><button id="next" type="button">下一题</button></div></form>
+<div id="feedback" role="status" hidden></div>
+</div>
+<div id="empty" hidden aria-live="polite"><h2>这个范围没有待重做的错题</h2><p>可以切换学科，或回到练习继续做题。</p><button id="back" type="button" class="primary">返回练习</button></div>
+</div>
+</section>
+<footer>此页只含原创示例。进度保存在当前浏览器；PDF、OCR 和资料导入请使用<a href="https://github.com/Patrick-Arnold0712/titi-quiz#本地启动">完整本地版</a>。</footer>
+</main></body></html>
