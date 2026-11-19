@@ -1,0 +1,1 @@
+Tesseract.js trained models: @tesseract.js-data/chi_sim and @tesseract.js-data/eng (1.0.0), Apache License 2.0. See tesseract.js-core-LICENSE and https://github.com/tesseract-ocr/tessdata_best for upstream notices.
